@@ -3,22 +3,25 @@
     <%= render 'shared/avatar', user: @user %><br>
     <h5><%= link_to @user.name, @user %></h5>
   </div>
+  
+  <center>
   <h5>
     <%= fa_icon 'shield' %>
-    <%= pluralize(@user.posts_count, 'post') %>
-  </h5>
-  <% if @user.dob.present? %>
-    <h5>
+    <%= pluralize(@user.posts_count, 'post') %>  |
+    <% if @user.dob.present? || @user.location.present? %> 
+        
       <%= fa_icon @user.sex %>
       <%= "#{pluralize(age(@user.dob), 'year')} old" %>
-    </h5>
-  <% end %>
-  <% if @user.location.present? %>
-    <h5>
-      <%= fa_icon 'map-marker' %>
+        
+        |   <%= fa_icon 'map-marker' %>
       <%= @user.location %>
-    </h5>
+    
   <% end %>
+  </h5>
+
+
+
+  
   <br>
   <div class="text-center">
     <% unless is_current_user?(@user) %>
@@ -26,4 +29,8 @@
       <h6><%= 'Follows you' if current_user.followed_by?(@user) %></h6>
     <% end %>
   </div>
+
+  <button type="button" class="btn btn-primary"> <a href="/users/asma/friends">Friends</a> </button>
+<button type="button" class="btn btn-primary"> Books </button>
+<button type="button" class="btn btn-primary"> <a href="/users/asma/followers">Followers</a> </button></center>
 </div>

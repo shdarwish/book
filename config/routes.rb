@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :books
+  resources :bookstores
+  resources :genres
   resources :posts
   resources :comments, only: [:create, :destroy]
   devise_for :users

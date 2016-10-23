@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150723052743) do
+ActiveRecord::Schema.define(version: 20161018150149) do
 
   create_table "activities", force: :cascade do |t|
     t.string   "trackable_type"
@@ -26,6 +26,22 @@ ActiveRecord::Schema.define(version: 20150723052743) do
     t.index ["owner_id", "owner_type"], name: "index_activities_on_owner_id_and_owner_type"
     t.index ["recipient_id", "recipient_type"], name: "index_activities_on_recipient_id_and_recipient_type"
     t.index ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type"
+  end
+
+  create_table "books", force: :cascade do |t|
+    t.string   "isbn"
+    t.string   "title"
+    t.string   "author"
+    t.integer  "genre_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "bookstores", force: :cascade do |t|
+    t.string   "name"
+    t.string   "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "comments", force: :cascade do |t|
@@ -80,7 +96,21 @@ ActiveRecord::Schema.define(version: 20150723052743) do
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
   end
 
+  create_table "genres", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.integer  "book_id"
+    t.integer  "bookstore_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
   create_table "posts", force: :cascade do |t|
+    t.string   "title"
     t.text     "content",                     null: false
     t.integer  "user_id"
     t.string   "attachment"
@@ -94,7 +124,15 @@ ActiveRecord::Schema.define(version: 20150723052743) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
+  create_table "usergenres", force: :cascade do |t|
+    t.integer  "genre_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
+    t.string   "username"
     t.string   "name",                   default: "",     null: false
     t.string   "email",                  default: "",     null: false
     t.string   "encrypted_password",     default: "",     null: false

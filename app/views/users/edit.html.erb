@@ -11,12 +11,10 @@
           <br>
           <%= f.file_field :avatar %>
         </div>
+      
         <div class="form-group">
-          <%= f.label :cover %>
-          <br>
-          <%= render 'shared/cover', user: @user %>
-          <br>
-          <%= f.file_field :cover %>
+          <%= f.label :username %>
+          <%= f.text_field :username, placeholder: 'Username', class: 'form-control' %>
         </div>
         <div class="form-group">
           <%= f.label :name %>
@@ -42,10 +40,15 @@
           <%= f.label :sex %><br>
           <%= f.select :sex, options_for_seasons, class: 'form-control', prompt: 'Select One' %>
         </div>
+        <div>
+          <%= f.label :genre, class: 'form-group' %>
+          <%= render partial: 'genre_check', class: 'appformcontrol form-control' %>
+        </div>
         <div class="actions">
           <%= submit_tag 'Update', class: 'btn btn-primary' %>
         </div>
       <% end %>
     </div>
   </div>
+</br></br>
 </div>

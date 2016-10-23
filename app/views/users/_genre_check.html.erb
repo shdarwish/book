@@ -1,0 +1,8 @@
+
+<p>
+  <% for genre in Genre.all  %>
+     <%= check_box_tag "genre_ids[]", genre.id, @user.genres.include?(genre) %>
+     <%= genre.name %>
+     <br />
+  <% end  %>
+</p>

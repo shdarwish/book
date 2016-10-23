@@ -13,16 +13,17 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'avenir', sans-serif;
 }
 
 .navbar {
   border          : none;
-  background-color: $navbar-color;
+  background-color: #877ebd;
 }
 
 .navbar-brand {
   font-weight: 600;
+  
 }
 
 .navbar-brand,
@@ -36,10 +37,12 @@ h6 {
 }
 
 .avatar {
-  border: 1px solid $border-color;
+  border-radius: 50%;
   width : 50px;
   height: 50px;
 }
+
+
 
 .cover {
   width                : 100%;
@@ -185,4 +188,31 @@ p {
 
 .atwho-view .cur {
   background: $navbar-color;
+}
+
+.btn btn-primary{
+background: white;}
+
+/* unvisited link */
+a:link {
+    color: grey;
+}
+
+/* visited link */
+a:visited {
+    color: grey;
+}
+
+/* mouse over link */
+a:hover {
+    color: grey;
+}
+
+/* selected link */
+a:active {
+    color: white;
+}
+
+.btn-primary.outline {
+  color: white;
 }
