@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyStrin
+  name: drama
 
 two:
-  name: MyString
+  name: horror
