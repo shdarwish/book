@@ -1,0 +1,32 @@
+
+<div class="bg">
+  <br/>
+  <center>
+    <h1>Authors</h1>
+    <%= link_to 'Add new Author', new_author_path %>
+      <div class="activity1">
+    <% @authors.each do |author| %>
+
+    <div class="row"> 
+        <center>
+        <br/>
+        <h4><%= author.name %></h4>
+        <br/>
+        <%= link_to 'Show', author %> | 
+        <%= link_to 'Edit', edit_author_path(author) %> | 
+        <%= link_to 'Destroy', author, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </center>
+
+    </div>
+    <hr>
+      
+
+<% end %>
+
+
+  </div>
+  </center>
+
+
+  <br/>   
+</div>

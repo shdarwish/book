@@ -6,18 +6,28 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user
   before_action :check_ownership, only: [:edit, :update]
+  before_action :recgenre
+
   respond_to :html, :js
 
   def show
-    @activities = PublicActivity::Activity.where(owner: @user).order(created_at: :desc).paginate(page: params[:page], per_page: 10)
+    @activities = PublicActivity::Activity.where(owner: @user, key: "post.create").order(created_at: :desc).paginate(page: params[:page], per_page: 10)
   end
 
   def edit
   end
 
   def update
-    if @user.update(user_params)
+    if @user.update(user_params) 
       redirect_to user_path(@user)
+      @user.genres = Genre.find(params[:genre_ids])
+
+      # if (params[:genre_ids]).nil?
+      #   @user.genres = nil
+      # elsif !(params[:genre_ids]).nil?
+      #   @user.genres = Genre.find(params[:genre_ids])
+      # end
+
     else
       render :edit
     end
@@ -39,6 +49,16 @@ class UsersController < ApplicationController
   end
 
   private
+
+
+
+  def recgenre
+    if !session[:answer].nil?
+      genre = Genre.find_by name: session[:answer]
+      Usergenre.create(user_id: current_user.id, genre_id: genre.id)
+      session[:answer] = nil
+    end
+  end
 
   def user_params
     params.require(:user).permit(:username, :name, :about, :avatar, :cover,

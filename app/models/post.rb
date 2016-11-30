@@ -5,6 +5,10 @@
 class Post < ActiveRecord::Base
   include Shared::Callbacks
 
+  attr_accessor :book_name
+
+  belongs_to :book
+
   belongs_to :user
   counter_culture :user
   acts_as_votable
@@ -15,7 +19,6 @@ class Post < ActiveRecord::Base
 
   default_scope -> { order('created_at DESC') }
 
-  mount_uploader :attachment, AvatarUploader
 
   validates_presence_of :content
   validates_presence_of :user

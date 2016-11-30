@@ -1,3 +1,6 @@
+<div class="bg">
+  <br>
+  <br>
 <div class="row">
   <div class="col-lg-6 col-lg-offset-3">
     <div class="well">
@@ -40,15 +43,26 @@
           <%= f.label :sex %><br>
           <%= f.select :sex, options_for_seasons, class: 'form-control', prompt: 'Select One' %>
         </div>
-        <div>
-          <%= f.label :genre, class: 'form-group' %>
+        <div class="form-group">
+          <%= f.label :genre %>
           <%= render partial: 'genre_check', class: 'appformcontrol form-control' %>
         </div>
+        <div class="form-group">
+          <%= f.label :edit_your_notification_preferance %>
+          <%= link_to 'edit notification', prefer_path(@user.prefer.id) %>
+        </div>
+        <div class="form-group">
+          <%= f.label :lets_recommend_a_genre_for_you %>
+          <%= link_to 'Get a recommended genre', new_quiz_path %>
+        </div>
+
+
         <div class="actions">
-          <%= submit_tag 'Update', class: 'btn btn-primary' %>
+          <%= submit_tag 'Update', class: 'btn  mybutton_standard' %>
         </div>
       <% end %>
     </div>
   </div>
 </br></br>
+</div>
 </div>

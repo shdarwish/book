@@ -1,28 +1,23 @@
 <div id="user-info" class="well">
   <div class="text-center">
-    <%= render 'shared/avatar', user: @user %><br>
+    <%= render 'shared/avatar', user: @user %>
+    <br>
     <h5><%= link_to @user.name, @user %></h5>
   </div>
-  
-  <center>
-  <h5>
-    <%= fa_icon 'shield' %>
-    <%= pluralize(@user.posts_count, 'post') %>  |
-    <% if @user.dob.present? || @user.location.present? %> 
-        
-      <%= fa_icon @user.sex %>
-      <%= "#{pluralize(age(@user.dob), 'year')} old" %>
-        
-        |   <%= fa_icon 'map-marker' %>
-      <%= @user.location %>
-    
-  <% end %>
-  </h5>
-
-
-
+  <div class="text-center">
+    <% if !@user.genres.size ==0 %>
+      <hr>
+      <h5> User's Genres </h5> 
+      |
+      <% for genre in @user.genres %>
+        <%= genre.name %>
+        | 
+      <% end %>
+    <% end %>
+  </div>
   
   <br>
+ 
   <div class="text-center">
     <% unless is_current_user?(@user) %>
       <%= render 'follows/form', user: @user %>
@@ -30,7 +25,26 @@
     <% end %>
   </div>
 
-  <button type="button" class="btn btn-primary"> <a href="/users/asma/friends">Friends</a> </button>
-<button type="button" class="btn btn-primary"> Books </button>
-<button type="button" class="btn btn-primary"> <a href="/users/asma/followers">Followers</a> </button></center>
+  <div class="text-center">
+    <h5>
+      <%= pluralize(@user.posts_count, 'Post') %>
+      |
+      <%= link_to "#{@user.followers.count} Followers" , followers_user_path(@user) %> 
+      | 
+      <%= link_to "#{@user.follows.count} Follows", friends_user_path(@user) %> 
+    </h5>
+  </div>
+
+  <% if is_current_user?(@user) %>
+    <hr>
+    <h7>
+      <%= fa_icon 'pencil' %>
+      <%= link_to 'Edit Profile', edit_user_path(current_user) %> 
+    </h7>
+    <br>
+    <br>
+    <h7>  <%= fa_icon 'lock' %>
+      <%= link_to 'Change password', edit_user_registration_path %>
+    </h7>
+  <% end %>
 </div>

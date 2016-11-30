@@ -18,10 +18,21 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :events
 
+# i am not sure about this 
+  has_many :books, through: :posts
+
+  has_one :prefer
+
+  #has_one :quiz
+  has_many :notifications
+
   mount_uploader :avatar, AvatarUploader
   mount_uploader :cover, AvatarUploader
 
-  validates_presence_of :name
+  validates :username, presence: true, uniqueness: true
+  validates :name, presence: true
+ # validates :email, presence: true, uniqueness: true
+ # validates :password, presence: true, length: { minimum: 8 }
 
   self.per_page = 10
 

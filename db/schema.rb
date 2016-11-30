@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161018150149) do
+ActiveRecord::Schema.define(version: 20161123130129) do
 
   create_table "activities", force: :cascade do |t|
     t.string   "trackable_type"
@@ -28,29 +28,42 @@ ActiveRecord::Schema.define(version: 20161018150149) do
     t.index ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type"
   end
 
-  create_table "books", force: :cascade do |t|
-    t.string   "isbn"
-    t.string   "title"
-    t.string   "author"
-    t.integer  "genre_id"
+  create_table "authorbooks", force: :cascade do |t|
+    t.integer  "book_id"
+    t.integer  "author_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "authors", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "books", force: :cascade do |t|
+    t.string   "isbn"
+    t.string   "title"
+    t.integer  "genre_id"
+    t.string   "bookimage"
+    t.text     "description"
+    t.integer  "count",       default: 0
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
   create_table "bookstores", force: :cascade do |t|
     t.string   "name"
-    t.string   "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "comments", force: :cascade do |t|
-    t.string   "title",            limit: 50, default: ""
     t.text     "comment"
     t.string   "commentable_type"
     t.integer  "commentable_id"
     t.integer  "user_id"
-    t.string   "role",                        default: "comments"
+    t.string   "role",             default: "comments"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "comment_html"
@@ -109,11 +122,22 @@ ActiveRecord::Schema.define(version: 20161018150149) do
     t.datetime "updated_at",   null: false
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "creater_id"
+    t.string   "kind"
+    t.boolean  "read",       default: false
+    t.integer  "act_id"
+    t.integer  "post_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
   create_table "posts", force: :cascade do |t|
-    t.string   "title"
+    t.integer  "book_id"
+    t.string   "status"
     t.text     "content",                     null: false
     t.integer  "user_id"
-    t.string   "attachment"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "cached_votes_up", default: 0
@@ -122,6 +146,28 @@ ActiveRecord::Schema.define(version: 20161018150149) do
     t.index ["cached_votes_up"], name: "index_posts_on_cached_votes_up"
     t.index ["comments_count"], name: "index_posts_on_comments_count"
     t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "prefers", force: :cascade do |t|
+    t.boolean  "comment",    default: true
+    t.boolean  "like",       default: true
+    t.boolean  "follow",     default: true
+    t.integer  "user_id"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  create_table "quizzes", force: :cascade do |t|
+    t.string   "q1"
+    t.string   "q2"
+    t.string   "q3"
+    t.string   "q4"
+    t.string   "q5"
+    t.string   "q6"
+    t.string   "q7"
+    t.string   "result"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "usergenres", force: :cascade do |t|
@@ -139,6 +185,7 @@ ActiveRecord::Schema.define(version: 20161018150149) do
     t.string   "about"
     t.string   "avatar"
     t.string   "cover"
+    t.boolean  "admin",                  default: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

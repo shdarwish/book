@@ -13,6 +13,8 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.new(post_params)
     if @post.save
+      count = @post.book.count
+      Book.update(@post.book.id, :count => count+1)
       redirect_to root_path
     else
       redirect_to root_path, notice: @post.errors.full_messages.first
@@ -24,7 +26,7 @@ class PostsController < ApplicationController
 
   def update
     @post.update(post_params)
-    redirect_to @post
+    redirect_to root_path
   end
 
   def destroy
@@ -35,12 +37,15 @@ class PostsController < ApplicationController
     end
   end
 
+
   private
+
+
   def set_post
     @post = Post.find(params[:id])
   end
 
   def post_params
-    params.require(:post).permit(:title, :content, :attachment)
+    params.require(:post).permit(:book_id, :status, :content)
   end
 end

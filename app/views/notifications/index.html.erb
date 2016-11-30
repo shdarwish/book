@@ -1,0 +1,39 @@
+<div class="bg">
+  <br/>
+  <center>
+    <h1>Notifications</h1>
+    <% if @notifications.nil? || @notifications.size == 0 %>
+    <div class="activity1">
+      <div class="row"> 
+        <div class="col-lg-12">
+          <p> You have no notifications </p>
+        </div>
+      </div>
+    </div>
+
+    <% else %>
+    <% @notifications.each do |notification| %>
+    <div class="activity1">
+      <div class="row"> 
+        <div class="col-lg-6">
+          <br/>
+          <%= link_to User.find(notification.creater_id).username, user_path(notification.creater_id) %> 
+          had
+          <% if notification.kind == 'comment' %>
+          commented on your 
+          <%= link_to 'post', post_path(notification.post_id) %>
+          <% elsif notification.kind == 'like' %>
+          liked your 
+          <%= link_to 'post', post_path(notification.post_id) %>
+          <% else %>
+          followed you
+          <% end %>
+          <br/><br/>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <% end %>
+  </center>
+  <br/>   
+</div>

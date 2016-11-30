@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Prefers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Comment</th>
+      <th>Like</th>
+      <th>Follow</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @prefers.each do |prefer| %>
+      <tr>
+        <td><%= prefer.comment %></td>
+        <td><%= prefer.like %></td>
+        <td><%= prefer.follow %></td>
+        <td><%= link_to 'Show', prefer %></td>
+        <td><%= link_to 'Edit', edit_prefer_path(prefer) %></td>
+        <td><%= link_to 'Destroy', prefer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Prefer', new_prefer_path %>

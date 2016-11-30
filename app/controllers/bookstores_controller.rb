@@ -1,6 +1,6 @@
 class BookstoresController < ApplicationController
   before_action :set_bookstore, only: [:show, :edit, :update, :destroy]
-
+  before_action :admin_only
   # GET /bookstores
   def index
     @bookstores = Bookstore.all
@@ -53,6 +53,6 @@ class BookstoresController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def bookstore_params
-      params.require(:bookstore).permit(:name, :location)
+      params.require(:bookstore).permit(:name)
     end
 end

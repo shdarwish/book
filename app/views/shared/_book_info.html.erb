@@ -1,0 +1,16 @@
+
+
+
+<div>
+<% if book %>
+
+	    <%= link_to book_path(book.id) do %>
+          <%= image_tag book.bookimage, :class => "style_image" %>
+        <%end%>
+
+<br>
+
+<span2><%= book.genre.name %></span2>
+
+<% end %>
+</div>

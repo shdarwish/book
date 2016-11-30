@@ -1,27 +1,103 @@
-<div class="row">
-  <div id="newsfeed" class="col-lg-6">
-    <h4><%= fa_icon "newspaper-o" %> NEWSFEED</h4>
-    <div id="activities">
-      <% if @activities.empty? %>
-        <div class="well">
-          <%= render('shared/no_resource', resources: 'Activities') %>
-        </div>
-      <% else %>
-        <%= render_activities(@activities, layout: '/shared/activity') %>
-      <% end %>
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+  <div class="intro-header">
+    <h1 class="h1_home wow fadeIn">Bookworm</h1>
+    <h3 class="h3_home wow fadeIn">feed your mind</h3>
+
+    <div class="col-lg-6 col-lg-offset-3">
+      <p class="text-center">
+
+            It is not goodreads. It is not amazon. It's a reading platform customized to fit your reading interests. This is a place where you can share your reading thoughts and interpretation with people who share the same interest and so will engage with your posts. First you have to define your reading interests by choosing a <%= link_to 'genre', "#genre" %> you enjoy, so you... <%= link_to 'read more', "#about" %>
+      </p>
     </div>
-    <%= render 'shared/paginate', resources: @activities %>
-  </div>
-  <div id="intro" class="col-lg-6">
-    <h1>Socify</h1>
-    <p>Socify is an open source social networking app written using <%= fa_icon 'diamond' %> Ruby on Rails. You can checkout the blog <a href="https://medium.com/@sudharshanmuralidharaniyer/eb31da569233">post</a> on how
-    it was developed and also the source code on <a href="https://github.com/sudharti/socify"><%= fa_icon 'github' %> Github</a>.</p>
-    <hr>
-    <a href="https://github.com/sudharti/socify" class="btn btn-warning">
-      <%= fa_icon 'star' %> Star it
-    </a>
-    <a href="https://github.com/sudharti/socify" class="btn btn-primary">
-      <%= fa_icon 'code-fork' %> Fork it
-    </a>
+             <!-- /.container -->
+  </div> 
+
+  </div> 
+  <div class="row home_section" id="genre">
+  <div class="col-lg-6 col-lg-offset-3">
+ <h2 class="h2_genre">BOOK GENRE</h2>
+ <p class="text-center">
+   The first stept to create your account is picking your favorite genre to read.
+    You can either <span><%= link_to 'PICK A GENRE', "#genre" %></span> manualy below, or if you are not sure what genre you are most interested in take our quiz to <span><%= link_to 'FIND OUT', new_quiz_path %></span> your genre of interest.
+ </p>
+
+      
+     
   </div>
 </div>
+<div class = "row">
+  <div class="img">
+          <%= link_to save_genre_path(:genre => 'Fantasy') do %>
+            <%= image_tag "http://www.thebookseller.com/sites/default/files/Jacket%20-%20high%20FB.jpg", :class => "img img"%>
+            <p class="imgDescription">FANTASY</p>
+          <%end%>
+          
+        </div>
+        <div class="img">
+           <%= link_to save_genre_path(:genre => 'Science Fiction') do %>
+          <%= image_tag "https://images-na.ssl-images-amazon.com/images/I/51MC3VIGAnL.jpg", :class => "img img" %>
+          <p class="imgDescription">Sci-Fi</p>
+          <%end%>
+       </div>
+       <div   class="img">
+        <%= link_to save_genre_path(:genre => 'classic') do %>
+          <%= image_tag "http://d28hgpri8am2if.cloudfront.net/book_images/cvr9781451688092_9781451688092_hr.jpg", :class => "img img" %>
+          <p class="imgDescription">History</p>
+          <%end%>
+        </div>
+        <div class="img">
+          <%= link_to save_genre_path(:genre => 'Horror') do %>
+          <%= image_tag "https://s-media-cache-ak0.pinimg.com/originals/9f/70/0f/9f700fc87d5ffc85e73d34830454a2fd.jpg", :class => "img-responsive" %>
+          <p class="imgDescription">Horror</p>
+          <%end%>
+       </div>
+   
+       <div   class="img">
+        <%= link_to save_genre_path(:genre => 'Comedy') do %>
+          <%= image_tag "https://2982-presscdn-29-70-pagely.netdna-ssl.com/wp-content/uploads/2015/07/Bossypants-Tina-Fey-Cover.jpg", :class => "img img" %>
+          <p class="imgDescription">Comedy</p>
+          <%end%>
+        </div>
+        <div class="img">
+          <%= link_to save_genre_path(:genre => 'Mystery') do %>
+          <%= image_tag "http://bookdesigners.com/_cache/img/SHERLOCK-AMAZON-r-h1200-q100-m1398913599.jpg", :class => "img img" %>
+          <p class="imgDescription">Mystery</p>
+          <%end%>
+       </div>
+       <div   class="img">
+        <%= link_to save_genre_path(:genre => 'Romance') do %>
+          <%= image_tag "http://nicholassparks.com/wp-content/uploads/2013/07/thenotebook-680x1020.jpg", :class => "img img" %>
+          <p class="imgDescription">Romance</p>
+          <%end%>
+        </div>
+        <div class="img">
+          <%= link_to save_genre_path(:genre => 'Drama') do %>
+          <%= image_tag "http://d28hgpri8am2if.cloudfront.net/book_images/cvr9781416575245_9781416575245_hr.jpg", :class => "img img" %>
+          <p class="imgDescription">Drama</p>
+          <%end%>
+       </div>
+</div>
+  
+  <div class="row">
+    <div class="col-lg-6 col-lg-offset-3 home_section">
+      <div id="about">
+      <h2 class="text-center">ABOUT</h2>
+      
+      <h3>What?</h3>
+      <p>
+      Bookworm is a socialmedia platform that is completly dedicated to readers. It is based on genre prefernce so the application will be customized based on the readers' genre of interest. Such that the reader can find other readers who share the same genre of interest as well as books from that genre. Also the application provide the reader with bookstores near them where they can find a certain book.
+      </p>
+      <br>
+      <h3>Why?</h3>
+      <p>
+      Many readers like to share their thoughts and interpritation with others whether in social media or word of mouth. However in most social media people does not engage and respond to such posts as they mostly doesn't share the same interest or have not read similar book. And this problem discorage some people to read books as they're unable to share their thoughts with others. Also many young readers have no idea what genres are most interesting to them, thus we created an quiz that determines the user's genre of interest.
+      </p>
+      <br>
+      <h3>How?</h3>
+      <p>
+        To start using this application, the user must first pick a book genre that they like. They could eaither pick it manually from the bookcovers in the home page or take our quiz to find out their genre of interest. The second step is to create an account by siging up. After confirming their account and signing in, the user can edit their profile to add more info or add more genres to thir interest. The user can start looking for friends who share the same genre of interest by clicking the "find friends" link. They can also find books rcomended by the system that matches the user's genres of interest by clicking on "recomended books" link. Finally the user can start sharing their reading status of books they started, currently, or finished reading.
+      </p>
+    </div>
+  </div>
+</div>
+</body>

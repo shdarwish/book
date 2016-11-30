@@ -1,0 +1,28 @@
+<div class="bg"> 
+	<br>
+	<br>
+	<br>
+
+	<center>
+		<div class="activity1">
+			<div class="showleft">
+			<p>
+				<strong>Show Notifications for:</strong>
+
+				</p>
+				<% if @prefer.comment %>
+					<li><p> Comments </p></li>
+				<% end %>
+				<% if @prefer.like %>
+					<li><p>  Likes </p></li>
+				<% end %>
+				<% if @prefer.follow %>
+					<li><p> Who followed me </p></li>
+				<% end %>
+				</div>
+		
+			<%= link_to 'Edit', edit_prefer_path(@prefer) %> |
+			<%= link_to 'Back', edit_user_path(current_user) %>
+		</div>
+	</center>
+</div>

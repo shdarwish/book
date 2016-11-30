@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
 
-  resources :books
+  resources :prefers
+  resources :notifications
+  resources :quizzes
+  resources :authors
+
+resources :books do
+  get :autocomplete_book_title, :on => :collection
+end
+
+  #resources :books
   resources :bookstores
   resources :genres
   resources :posts
@@ -29,6 +38,14 @@ Rails.application.routes.draw do
   match :unlike, to: 'likes#destroy', as: :unlike, via: :post
   match :find_friends, to: 'home#find_friends', as: :find_friends, via: :get
   match :about, to: 'home#about', as: :about, via: :get
+
+  get 'recommended_books' => 'books#reco_book'
+
+  get 'save_genre' => 'home#save_genre'
+
+  get 'recommended_friend' => 'home#recofriends'
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

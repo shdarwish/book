@@ -1,9 +1,25 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
+  before_action :admin_only, only: [:edit, :new, :update, :create, :destroy]
+  autocomplete :book, :title, :full => true
+
 
   # GET /books
   def index
-    @books = Book.all
+   # @books = Book.where(["title LIKE ?", "%#{params[:search]}%"]).order(count: :desc)
+      @books = Book.all
+     if params[:search]
+      @books = Book.name_like("%#{params[:search]}%").order('name')
+    else
+    end
+  end
+
+  def reco_book
+    if current_user.genres.to_a.size <= 0
+      @books = Book.all
+    else 
+      @books = Book.genrecheck(current_user.id)
+    end
   end
 
   # GET /books/1
@@ -25,6 +41,8 @@ class BooksController < ApplicationController
 
     if @book.save
       redirect_to @book, notice: 'Book was successfully created.'
+      @book.authors = Author.find(params[:author_ids])
+      @book.bookstores = Bookstore.find(params[:bookstore_ids])
     else
       render :new
     end
@@ -34,6 +52,8 @@ class BooksController < ApplicationController
   def update
     if @book.update(book_params)
       redirect_to @book, notice: 'Book was successfully updated.'
+      @book.authors = Author.find(params[:author_ids])
+      @book.bookstores = Bookstore.find(params[:bookstore_ids])
     else
       render :edit
     end
@@ -53,6 +73,6 @@ class BooksController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def book_params
-      params.require(:book).permit(:isbn, :title, :author, :genre_id)
+      params.require(:book).permit(:isbn, :title, :genre_id, :bookimage, :description)
     end
 end

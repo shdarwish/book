@@ -17,7 +17,7 @@ class BookstoresControllerTest < ActionDispatch::IntegrationTest
 
   test "should create bookstore" do
     assert_difference('Bookstore.count') do
-      post bookstores_url, params: { bookstore: { location: @bookstore.location, name: @bookstore.name } }
+      post bookstores_url, params: { bookstore: { name: @bookstore.name } }
     end
 
     assert_redirected_to bookstore_url(Bookstore.last)
@@ -34,7 +34,7 @@ class BookstoresControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update bookstore" do
-    patch bookstore_url(@bookstore), params: { bookstore: { location: @bookstore.location, name: @bookstore.name } }
+    patch bookstore_url(@bookstore), params: { bookstore: { name: @bookstore.name } }
     assert_redirected_to bookstore_url(@bookstore)
   end
 

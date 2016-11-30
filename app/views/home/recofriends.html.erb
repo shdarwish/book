@@ -1,0 +1,23 @@
+
+
+<div class="bg">
+<br/><br/>
+<div class="row">
+  <div class="col-lg-3">
+    <%= render 'shared/user_info' %>
+  </div>
+  <div class="col-lg-6 well">
+    <h3>Readers with shared interests </h3>
+    <%= link_to('To See All Users', find_friends_path)%>
+    <hr>
+    <div id="users">
+      <%= render(@r) || render('shared/no_resource', resources: 'Users') %>
+    </div>
+    <%= render 'shared/paginate', resources: @users %>
+  </div>
+  <div class="col-lg-3">
+    <%= render 'shared/links' %>
+  </div>
+</div>
+<br><br><br><br><br><br><br><br><br><br>
+</div>

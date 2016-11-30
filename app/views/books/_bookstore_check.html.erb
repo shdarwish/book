@@ -1,0 +1,7 @@
+<p>
+  <% for bookstore in Bookstore.all  %>
+     <%= check_box_tag "bookstore_ids[]", bookstore.id, @book.bookstores.include?(bookstore) %>
+     <%= bookstore.name %>
+     <br />
+  <% end  %>
+</p>

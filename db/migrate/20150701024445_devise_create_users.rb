@@ -9,6 +9,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :about
       t.string :avatar
       t.string :cover
+      t.boolean :admin, :default => false
 
       ## Recoverable
       t.string   :reset_password_token

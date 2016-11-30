@@ -1,5 +1,6 @@
-
-<br>
+<div class="bg">   
+    </br>
+    </br>
 <div id="user-<%= @user.id %>" class="row">
   <div class="col-lg-3">
     <%= render 'shared/user_info' %>
@@ -18,16 +19,27 @@
   </div>
   <div class="col-lg-3">
     <% if is_current_user?(@user) %>
-      <div class="well">
-        <ul class="nav nav-pills nav-stacked">
-          <li><%= link_to 'Edit Profile', edit_user_path(@user) %></li>
-          <li><%= link_to 'Change password', edit_user_registration_path %></li>
-          <li><%= link_to 'Friends', friends_user_path(@user) %></li>
-          <li><%= link_to 'Followers', followers_user_path(@user) %></li>
-          <li><%= link_to 'Deactivate', deactivate_user_path(@user) %></li>
-        </ul>
+    <div id="links" class="well">
+        <h5>
+          <%= fa_icon 'newspaper-o' %>
+          <%= link_to 'Timeline', root_path %>
+        </h5>
+        <h5>
+          <%= fa_icon 'book' %>
+          <%= link_to 'Recommended Books', recommended_books_path %>
+        </h5>
+        <h5>
+          <%= fa_icon 'search' %>
+          <%= link_to('Find Friends', recommended_friend_path)%>
+        </h5>
+        <h5>
+          <%= fa_icon 'times' %>
+          <%= link_to 'Deactivate', deactivate_user_path(@user) %>
+        </h5>
       </div>
     <% end %>
   </div>
-</br></br>
+</br></br> 
+</div>
+</br></br> </br></br> </br></br></br>
 </div>

@@ -1,6 +1,10 @@
 source 'https://rubygems.org'
 ruby '2.3.1'
 
+gem 'rails-jquery-autocomplete'
+
+gem 'jquery-ui-rails'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '5.0.0'
 
@@ -57,6 +61,7 @@ gem 'faker'
 gem 'populator'
 gem 'auto_html', '~>1.6.4'
 gem 'sanitize'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

@@ -1,53 +1,42 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
-      <%= link_to "كتابي", root_url, class: "navbar-brand" %>
-    </div>
-  </div>
-</nav>
-
-
-
-<nav class="navbar navbar-default navbar-fixed-bottom">
-  <div class="container">
-    <div class="navbar-header">
-
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-top">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-
-      
+      </button>
+      <%= link_to "Bookworm", root_url, class: "navbar-brand" %>
     </div>
-
+    <div class="collapse navbar-collapse" id="navbar-top">
+      <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
-    <br/>
-    <ul>
-      <button type="button" class="btn btn-secondary"> <%= link_to 'NewsFeed',      root_path%>
-      </button>
-      
-          
-      <button type="button" class="btn btn-secondary"> <%= link_to('Sign out',      destroy_user_session_path, method: :delete) %>
-      </button>
-      
-      <button type="button" class="btn btn-secondary"><%= link_to(current_user.name,      user_path(current_user)) %>
-      </button>
-      </ul>
-
-       
-    
-
-    
+          <% if current_user.prefer.comment and current_user.prefer.like and current_user.prefer.follow %>
+            <% @unreadnotifications = current_user.notifications.where(read: false) %>
+          <% elsif current_user.prefer.comment and current_user.prefer.like %>
+            <% @unreadnotifications = current_user.notifications.where(read: false, kind: 'comment', kind: 'like') %>
+          <% elsif current_user.prefer.follow and current_user.prefer.like %>
+            <% @unreadnotifications = current_user.notifications.where(read: false, kind: 'follow', kind: 'like') %>
+          <% elsif current_user.prefer.follow and current_user.prefer.comment %>
+            <% @unreadnotifications = current_user.notifications.where(read: false, kind: 'follow', kind: 'comment') %>
+          <% elsif current_user.prefer.like %>
+            <% @unreadnotifications = current_user.notifications.where(read: false, kind: 'like') %>
+          <% elsif current_user.prefer.follow %>
+            <% @unreadnotifications = current_user.notifications.where(read: false, kind: 'follow') %>
+          <% elsif current_user.prefer.comment %>
+            <% @unreadnotifications = current_user.notifications.where(read: false, kind: 'cooment') %>
+          <% else %>
+            <% @unreadnotifications = 0 %>
+          <% end %>
+          <li> <%= link_to(@unreadnotifications.count, notifications_path) %> <li>
+          <li><%= link_to(current_user.name, user_path(current_user)) %></li>
+          <li><%= link_to('Sign out', destroy_user_session_path, method: :delete) %></li>
         <% else %>
-    <br/>
-     <ul>
-          <button type="button" class="btn btn-secondary"><%= link_to 'About', about_path %></button>
-      
-         <button type="button" class="btn btn-secondary"><%= link_to 'Sign up', new_user_registration_path %></button>
-     
-       <button type="button" class="btn btn-secondary"> <%= link_to 'Sign in', user_session_path %></button>
-    </ul>
+          <li><%= link_to 'Sign up', new_user_registration_path %></li>
+          <li><%= link_to 'Sign in', user_session_path %></li>
         <% end %>
-
+      </ul>
+    </div>
   </div>
 </nav>

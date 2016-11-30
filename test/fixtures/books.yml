@@ -1,13 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  isbn: MyString
-  title: MyString
-  author: MyString
-  genre: MyString
+  isbn: n345
+  title: ho
+  author: MyStr
+  genre_id: 1
+
 
 two:
-  isbn: MyString
-  title: MyString
-  author: MyString
-  genre: MyString
+  isbn: no22
+  title: www
+  author: lol
+  genre_id: 2

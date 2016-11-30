@@ -5,6 +5,7 @@
 class LikesController < ApplicationController
   before_action :find_likeable
   before_action :authenticate_user!
+  after_action :create_noti, only: :create
   respond_to :js
 
   def create
@@ -16,6 +17,10 @@ class LikesController < ApplicationController
     @likeable.disliked_by current_user
     activity = PublicActivity::Activity.find_by_trackable_id_and_key(@likeable.id, "#{@likeable_type.downcase}.like")
     activity.destroy if activity.present?
+  end
+
+  def create_noti
+    create_notification(@likeable.user_id, current_user.id, 'like', @likeable.id)
   end
 
   private

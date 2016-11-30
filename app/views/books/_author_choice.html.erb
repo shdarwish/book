@@ -1,0 +1,7 @@
+<p>
+  <% for author in Author.all  %>
+     <%= check_box_tag "author_ids[]", author.id, @book.authors.include?(author) %>
+     <%= author.name %>
+     <br />
+  <% end  %>
+</p>

@@ -4,6 +4,7 @@
 
 class FollowsController < ApplicationController
   before_action :authenticate_user!
+  after_action :create_noti, only: :create
   respond_to :js
 
   def create
@@ -15,4 +16,10 @@ class FollowsController < ApplicationController
     @user = User.find(params[:user_id])
     current_user.stop_following(@user)
   end
+
+  def create_noti
+    followable = Follow.last.followable_id
+    create_notification(followable, current_user.id, 'follow', nil)
+  end
+
 end

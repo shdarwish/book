@@ -2,23 +2,39 @@
   <div id="mentionable-data" data-content="<%= mentionable_user_path(current_user) %>"></div>
   <%= form_for @post, html: { class: 'post_form' } do |f| %>
     <div class="form-group">
-      <h4>Update Status</h4>
-      <!-- title -->
-    <!--  <%= f.text_field :title, class: 'form-control', placeholder: 'Title', autofocus: true %> -->
-      <div id="post-content" contenteditable="true" class="editable form-control input-mentionable" placeholder="What's up?"></div>
-      <%= f.hidden_field :content, class: 'form-control input-mentionable' %>
+    <h4>Reading Status</h4>
+        <div class="field">
+      <%= f.label :book %>
+     <!-- <%= f.collection_select :book_id, Book.all, :id, :title, class: 'appformcontrol form-control' %> -->   
     </div>
-    <div id="img-preview" class="form-group hidden">
-      <img src="" alt="Preview">
+
+    <div>
+      <!-- text field tag=action,args,identifier,placeholdertext... -->
+
+      <%= f.autocomplete_field :book_name, autocomplete_book_title_books_path, id_element: '#book_id' %>
+<%= f.hidden_field :book_id, id: 'book_id' %>
+
     </div>
-    <div class="form-group hidden">
-      <%= f.file_field :attachment %>
-    </div>
-    <div class="form-group">
-      <a id="post-attachment" href="javascript:void(0);" class="pull-right btn btn-primary">
-        <%= fa_icon 'image' %>
-      </a>
-      <%= f.submit 'Post', class: 'btn btn-primary'%>
-    </div>
+
+      <div class="field">
+        <%= f.label :status %>
+        <%= f.radio_button :status, 'Started' %>
+        <%= 'Started' %><br/>
+        <%= f.radio_button :status, 'Currently reading' %>
+        <%= 'Currently reading' %><br/>
+        <%= f.radio_button :status , 'Finished' %>
+        <%='Finished'%>
+      </div>
+    
+    <div id="post-content" contenteditable="true" class="editable form-control input-mentionable" placeholder="What's up?"></div>
+    <%= f.hidden_field :content, class: 'form-control input-mentionable' %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.submit 'Post',  class: 'activity1'%>
+  </div>
+  
   <% end %>
+
+
 </div>

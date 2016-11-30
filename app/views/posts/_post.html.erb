@@ -1,26 +1,64 @@
 <div class="info">
   <%= render 'shared/avatar', user: post.user %>
-  <h4 class="name"><%= link_to post.user.name, user_path(post.user) %></h4>
-  <span class="action">created a <%= link_to 'post', post %></span>
+  <h3 class="name"><%= link_to post.user.name, user_path(post.user) %></h4>
+    <div class="pull-right"> <%= render 'shared/created_at', activity: post %> 
+       </div>
 </div>
 <div class="content">
-    <h4> <%= post.title %> </h4>
+
+<div class="row">
+  
+  <div  class="col-sm-9" >  
+
   <span class="text"><%= post.content_html %></span>
   
-  <%= render 'shared/created_at', activity: post %>
-  <div class="points">
-    <span class="like-count"><%= pluralize(post.cached_votes_up, 'like') %></span>
-    <span class="comments-count"><%= pluralize(post.comments_count, 'comment') %></span>
-    <div class="pull-right">
-      <% if belongs_to_user?(post) %>
-        <%= link_to edit_post_path(post), class: 'btn btn-primary btn-sm' do %>
-          <% fa_icon 'pencil' %>
-        <% end %>
-        <%= link_to post_path(post), method: :delete, class:'btn btn-danger btn-sm', remote: remote do %>
-          <% fa_icon 'trash' %>
-        <% end %>
-      <% end %>
-    </div>
+</div>
+<br>
+<br>
+  <div  class="col-sm-3" >
+  <div class="pull-right">
+    
+    <div class="statusButton">
+    <%= post.status %></div>
+    <%= render 'shared/book_info', book: post.book %>
   </div>
 </div>
+</div>
+
+<div class="row">
+  <div class="points">
+    <div class="col-sm-6">
+    <span class="like-count"><%= pluralize(post.cached_votes_up, 'like') %></span>
+    <span class="comments-count"><%= pluralize(post.comments_count, 'comment') %></span>
+    </div>
+    
+
+  </div>
+</div>
+
+   
+
+</div>
+<div class="row">
+  <div class="col-sm-9">
 <%= render 'shared/actions', resource: post %>
+</div>
+<br/>
+   
+  <div class="col-sm-3">  
+ 
+ 
+    <% if belongs_to_user?(post) %>
+          <%= link_to edit_post_path(post), class: 'btn  mybutton_standard' do %>
+            <% fa_icon 'pencil' %>
+          <% end %>
+    
+           <%= link_to post_path(post), method: :delete, class:'btn  mybutton_standard', remote: remote do %>
+            <% fa_icon 'trash' %>
+          <% end %>
+    
+              <% end %>
+      
+  </div> 
+    
+</div>

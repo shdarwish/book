@@ -1,24 +1,56 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Isbn:</strong>
-  <%= @book.isbn %>
-</p>
-
-<p>
+ 
+ <div class="bg">
+  <br>
+  <center>
+ <div class="activity1">
+  <h1> Book Info </h1>
+ 
+<div class="row showleft">
+  <div class="col-lg-5">
+    <p>
+   <%= image_tag @book.bookimage, :class => "showimage" %>
+ </p>
+ </div>
+ <div class="col-lg-6">
+  <br>
+  <br>
   <strong>Title:</strong>
   <%= @book.title %>
-</p>
-
-<p>
-  <strong>Author:</strong>
-  <%= @book.author %>
-</p>
-
-<p>
+  <br>
+  <br>
+    <strong>Isbn:</strong>
+  <%= @book.isbn %>
+  <br>
+  <br>
   <strong>Genre:</strong>
-  <%= @book.genre_id %>
+  <%= @book.genre.name %>
+  <br>
+  <br>
+   <strong>Author:</strong>
+  <%= render partial: 'author_list' %>
+  <br>
+   <strong>Bookstore:</strong>
+  <%= render partial: 'bookstore_list' %>
+</div>
+</div>
+<div class ="row showleft">
+  <p>
+  <strong>Description:</strong>
+  <%= @book.description %>
 </p>
+</div>
+
+
+                         
+<% if current_user.admin? %>
 
 <%= link_to 'Edit', edit_book_path(@book) %> |
 <%= link_to 'Back', books_path %>
+
+<% end %>
+
+  </center>
+  <br>
+</div>
+

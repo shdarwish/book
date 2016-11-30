@@ -9,7 +9,7 @@
     </div>
     <div class="pull-right">
       <% if belongs_to_user?(comment) %>
-        <%= link_to comment_path(comment), method: :delete, class: 'btn btn-danger btn-sm', remote: true do %>
+        <%= link_to comment_path(comment), method: :delete, class: 'btn  mybutton_standard', remote: true do %>
           <% fa_icon 'trash' %>
         <% end %>
       <% end %>

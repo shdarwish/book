@@ -3,12 +3,12 @@
   <head>
     <title>BookWorm</title>
     <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag 'application', "autocomplete-rails.js" %>
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
-    <%= render 'shared/navbar' %>
+  <%= render 'shared/navbar' %>
     <% unless notice.blank? %>
       <div class="alert alert-info alert-dismissable alert-fixed">
         <%= notice %>
@@ -21,8 +21,39 @@
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
       </div>
     <% end %>
-    <div class="container">
+    <div class="containerfront">
+   
       <%= yield %>
-    </div>
+    </div> 
+
+      <!-- FullScreen -->
+<!--       <div class="intro-header">
+        <div class="col-xs-12 text-center abcen1">
+          <h1 class="h1_home wow fadeIn">Bookworm</h1>
+          <h3 class="h3_home wow fadeIn">feed your brain</h3>
+          <ul class="list-inline intro-social-buttons">
+            <li><a href="https://twitter.com/galantiandrea" class="btn  btn-lg mybutton_cyano wow fadeIn" data-wow-delay="0.8s"><span class="network-name">Twitter</span></a>
+            </li>
+            <li id="download" ><a href="#downloadlink" class="btn  btn-lg mybutton_standard wow swing wow fadeIn" data-wow-delay="1.2s"><span class="network-name">Free Download</span></a>
+            </li>
+          </ul>
+          <div>
+          <p class=aboutfront>
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, 
+          </p>
+        </div>
+        </div>     -->
+        <!-- /.container -->
+<!--         <div class="col-xs-12 text-center abcen wow fadeIn">
+          <div class="button_down " > 
+
+            <%= link_to image_tag("circle.png"), "#whatis", :class => "imgg" %>
+
+
+          </div>
+        </div>
+      </div> -->
+
+
   </body>
 </html>

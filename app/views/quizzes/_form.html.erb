@@ -1,0 +1,315 @@
+<%= form_for(quiz) do |f| %>
+  <% if quiz.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(quiz.errors.count, "error") %> prohibited this quiz from being saved:</h2>
+
+      <ul>
+      <% quiz.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="row">
+  <div class="col-lg-6 col-lg-offset-3 well">
+  <div class="form-group">
+    <ul>
+    <%= f.label :Q1_Which_one_of_these_movies_are_you_most_likely_to_watch? %>
+    </ul>
+    <ul>
+    <%= f.radio_button :q1, 'A' %>
+    <%= "Something with tonnes of gore, and that'll make me have nightmares!" %>
+    </ul>
+    <ul>
+    <%= f.radio_button :q1, 'B' %>
+    <%= "Something with a lot of action! I dislike the boring crap..." %>
+    </ul>
+    <ul>
+    <%= f.radio_button :q1, 'C' %>
+    <%= "Something with alot of infromations about the past" %>
+    </ul>
+    <ul>
+    <%= f.radio_button :q1, 'D' %>
+    <%= "Something that'll make me question who the real culprit is!" %>
+    </ul>
+    <ul>
+    <%= f.radio_button :q1, 'E' %>
+    <%= "Something set in the far-off future, with a lot of futuristic stuff!" %>
+    </ul>
+    <ul>
+    <%= f.radio_button :q1, 'F' %>
+    <%= "Something from the past, with a lot of magic!" %>
+    </ul>
+    <ul>
+    <%= f.radio_button :q1, 'G' %>
+    <%= "Funny stuff." %>  
+    </ul>
+    <ul>
+    <%= f.radio_button :q1, 'H' %>
+    <%= "Something that'll make me sit at the edge of my seat, and that'll make me think 'What the hell just happened!?" %>
+    </ul>
+  </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-6 col-lg-offset-3 well">
+  <div class="form-group">
+    <ul>
+    <%= f.label :Q2_Your_personality? %>
+    </ul>
+    <ul>
+    <%= f.radio_button :q2, 'A' %>
+    <%= "I'm really dark in my personality. I laugh when someone falls down." %>
+    </ul>
+    <ul>
+    <%= f.radio_button :q2, 'B' %>
+    <%= "I'm intense! Very live-for-the-moment." %>
+    </ul>
+    <ul>
+    <%= f.radio_button :q2, 'C' %>
+    <%= "I'm a curious person how likes to look into the past" %>
+    </ul>
+    <ul>
+    <%= f.radio_button :q2, 'D' %>
+    <%= "I'm a very insightful person! I love asking questions!" %>
+    </ul>
+    <ul>
+    <%= f.radio_button :q2, 'E' %>
+    <%= "I'm smart, and maybe a little bit geeky!" %>
+    </ul>
+    <ul>
+    <%= f.radio_button :q2, 'F' %>
+    <%= "I'm very imaginative, and I like weird things." %>
+    </ul>
+    <ul>
+    <%= f.radio_button :q2, 'G' %>
+    <%= "I'm a wild and crazy guy!" %>  
+    </ul>
+    <ul>
+    <%= f.radio_button :q2, 'H' %>
+    <%= "I'm a little mysterious, and to myself." %>
+    </ul>
+  </div>
+  </div>
+  </div>
+  
+
+<div class="row">
+  <div class="col-lg-6 col-lg-offset-3 well">
+  <div class="form-group">
+    <ul>
+    <%= f.label :Q3_What_do_you_daydream_about? %>
+    </ul>
+    <ul>
+    <%= f.radio_button :q3, 'A' %>
+    <%= "Someone getting their gut ripped out!" %>
+    </ul>
+    <ul>
+    <%= f.radio_button :q3, 'B' %>
+    <%= "Kicking down the door, with my guns blazing!" %>
+    </ul>
+    <ul>
+    <%= f.radio_button :q3, 'C' %>
+    <%= "Something unusual... like monkeys flying to the moon, wearing space gear designed by the gods of the sun..." %>
+    </ul>
+    <ul>
+    <%= f.radio_button :q3, 'D' %>
+    <%= "Which one of these people around me is a killer in disguise?" %>
+    </ul>
+    <ul>
+    <%= f.radio_button :q3, 'E' %>
+    <%= "Which one of these people is a robot?" %>
+    </ul>
+    <ul>
+    <%= f.radio_button :q3, 'F' %>
+    <%= "Which one of these people is a wizard?" %>
+    </ul>
+    <ul>
+    <%= f.radio_button :q3, 'G' %>
+    <%= "How famous I would be if I pied the leader of my country!" %>  
+    </ul>
+    <ul>
+    <%= f.radio_button :q3, 'H' %>
+    <%= "How to play with someone's mind." %>
+    </ul>
+  </div>
+    </div>
+  </div>
+
+<div class="row">
+  <div class="col-lg-6 col-lg-offset-3 well">
+  <div class="form-group">
+    <ul>
+    <%= f.label :Q4_What_do_you_hate_most_in_a_book? %>
+    </ul>
+    <ul>
+    <%= f.radio_button :q4, 'A' %>
+    <%= "Books that won't give me a scare." %>
+    </ul>
+    <ul>
+    <%= f.radio_button :q4, 'B' %>
+    <%= "A slow speed." %>
+    </ul>
+    <ul>
+    <%= f.radio_button :q4, 'C' %>
+    <%= "A generic plot." %>
+    </ul>
+    <ul>
+    <%= f.radio_button :q4, 'D' %>
+    <%= "Little plot building, and a generic ending." %>
+    </ul>
+    <ul>
+    <%= f.radio_button :q4, 'E' %>
+    <%= "Lack of logic." %>
+    </ul>
+    <ul>
+    <%= f.radio_button :q4, 'F' %>
+    <%= "Boring real-world things, with little fantasy." %>
+    </ul>
+    <ul>
+    <%= f.radio_button :q4, 'G' %>
+    <%= "Lack of comic relief." %>  
+    </ul>
+    <ul>
+    <%= f.radio_button :q4, 'H' %>
+    <%= "Predictable plot, with little suspense." %>
+    </ul>
+  </div>
+    </div>
+  </div>
+
+<div class="row">
+  <div class="col-lg-6 col-lg-offset-3 well">
+    <div class="form-group">
+    <ul>
+    <%= f.label :Q5_What_do_you_like_most_in_a_book? %>
+    </ul>
+    <ul>
+    <%= f.radio_button :q5, 'A' %>
+    <%= "Freaky shit!" %>
+    </ul>
+    <ul>
+    <%= f.radio_button :q5, 'B' %>
+    <%= "Fast paced plot, with lots of action!" %>
+    </ul>
+    <ul>
+    <%= f.radio_button :q5, 'C' %>
+    <%= "The wisdom and history" %>
+    </ul>
+    <ul>
+    <%= f.radio_button :q5, 'D' %>
+    <%= "Twist endings!" %>
+    </ul>
+    <ul>
+    <%= f.radio_button :q5, 'E' %>
+    <%= "Logical plots, yet still containing some of that fantasy!" %>
+    </ul>
+    <ul>
+    <%= f.radio_button :q5, 'F' %>
+    <%= "Things that I don't see in real life, and take me away to some magical place!" %>
+    </ul>
+    <ul>
+    <%= f.radio_button :q5, 'G' %>
+    <%= "Something that'll make me piss my pants laughing!" %>  
+    </ul>
+    <ul>
+    <%= f.radio_button :q5, 'H' %>
+    <%= "Building up suspense, until one extremely climatic ending!" %>
+    </ul>
+  </div>
+    </div>
+  </div>
+
+<div class="row">
+  <div class="col-lg-6 col-lg-offset-3 well">
+    <div class="form-group">
+    <ul>
+    <%= f.label :Q6_Your_ideal_setting? %>
+    </ul>
+    <ul>
+    <%= f.radio_button :q6, 'A' %>
+    <%= "Somewhere creepy, and secluded." %>
+    </ul>
+    <ul>
+    <%= f.radio_button :q6, 'B' %>
+    <%= "Somewhere that's just asking to be explored!" %>
+    </ul>
+    <ul>
+    <%= f.radio_button :q6, 'C' %>
+    <%= "Somewhere in the past" %>
+    </ul>
+    <ul>
+    <%= f.radio_button :q6, 'D' %>
+    <%= "Somewhere with a lot of nooks, crannies, and people to ask!" %>
+    </ul>
+    <ul>
+    <%= f.radio_button :q6, 'E' %>
+    <%= "Somewhere futuristic." %>
+    </ul>
+    <ul>
+    <%= f.radio_button :q6, 'F' %>
+    <%= "Most likely the past, with dragons and whatnot." %>
+    </ul>
+    <ul>
+    <%= f.radio_button :q6, 'G' %>
+    <%= "Some place quirky." %>  
+    </ul>
+    <ul>
+    <%= f.radio_button :q6, 'H' %>
+    <%= "As long as it's relevant to the plot, the setting doesn't matter." %>
+    </ul>
+  </div>
+    </div>
+  </div>
+
+<div class="row">
+  <div class="col-lg-6 col-lg-offset-3 well">
+  <div class="form-group">
+    <ul>
+    <%= f.label :Q7_What_one_of_these_genres_do_you_like_the_most? %>
+    </ul>
+    <ul>
+    <%= f.radio_button :q7, 'A' %>
+    <%= "Horror/Splatterpunk" %>
+    </ul>
+    <ul>
+    <%= f.radio_button :q7, 'B' %>
+    <%= "Action/Adventure" %>
+    </ul>
+    <ul>
+    <%= f.radio_button :q7, 'C' %>
+    <%= "History" %>
+    </ul>
+    <ul>
+    <%= f.radio_button :q7, 'D' %>
+    <%= "Mystery" %>
+    </ul>
+    <ul>
+    <%= f.radio_button :q7, 'E' %>
+    <%= "Science Fiction" %>
+    </ul>
+    <ul>
+    <%= f.radio_button :q7, 'F' %>
+    <%= "Fantasy" %>
+    </ul>
+    <ul>
+    <%= f.radio_button :q7, 'G' %>
+    <%= "Comedy" %>  
+    </ul>
+    <ul>
+    <%= f.radio_button :q7, 'H' %>
+    <%= "Thriller/Suspense" %>
+    </ul>
+  </div>
+    </div>
+  </div>
+
+<div class="row">
+  <div class="col-lg-6 col-lg-offset-3 well">
+    <div class="form-group">
+      <%= f.submit 'Show result', class: 'btn  mybutton_standard'%>
+    </div>
+      </div>
+  </div>
+<% end %>

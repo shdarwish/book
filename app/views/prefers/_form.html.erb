@@ -1,0 +1,34 @@
+<%= form_for(prefer) do |f| %>
+  <% if prefer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(prefer.errors.count, "error") %> prohibited this prefer from being saved:</h2>
+
+      <ul>
+      <% prefer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field col-sm-4">
+    <%= f.label :comment %>
+    <%= f.check_box :comment %>
+  </div>
+
+  <div class="field col-sm-4">
+    <%= f.label :like %>
+    <%= f.check_box :like %>
+  </div>
+
+  <div class="field col-sm-4">
+    <%= f.label :follow %>
+    <%= f.check_box :follow %>
+  </div>
+
+
+  <div class="actions">
+   <%= f.submit 'Submit',  class: 'activity1'%>
+
+  </div>
+<% end %>

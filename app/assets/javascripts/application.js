@@ -16,9 +16,15 @@
 //= require bootstrap
 //= require bindWithDelay
 //= require jquery.datetimepicker
+//= require jquery-ui/autocomplete
+//= require autocomplete-rails
 //= require_tree .
 
+
+
 $(document).ready(function(){
+
+	
   $("#event_when").datetimepicker({
     format:'Y/m/d H:i'
   });
@@ -27,4 +33,7 @@ $(document).ready(function(){
     format:'Y/m/d',
     maxDate:'0'
   });
+
+
+
 });

@@ -1,14 +1,16 @@
-<p id="notice"><%= notice %></p>
 
+<div class="bg">
+	<br/>
+	<center>
+<div class="activity1">
 <p>
   <strong>Name:</strong>
   <%= @bookstore.name %>
 </p>
 
-<p>
-  <strong>Location:</strong>
-  <%= @bookstore.location %>
-</p>
+<%= link_to 'Edit', edit_author_path(@author) %> |
+<%= link_to 'Back', authors_path %>
 
-<%= link_to 'Edit', edit_bookstore_path(@bookstore) %> |
-<%= link_to 'Back', bookstores_path %>
+</div>
+</center>
+</div>
