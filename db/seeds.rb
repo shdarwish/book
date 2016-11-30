@@ -6,10 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Admins = User.create([{username: 'Asma', name: 'Asma Al-Hemaidi', email: 'asma@hotmail.com', password: '12345678', admin: true}, 
-	{username: 'Noor', name: 'Noor Al-Ansari', email: 'noor@hotmail.com', password: '12345678', admin: true},
-	{username: 'Shaikha', name: 'Shaikha Al-darwish', email: 'sh@hotmail.com', password: '12345678', admin: true},
-	{username: 'User', name: 'User', email: 'user@hotmail.com', password: '12345678', admin: false}])
+Admins = User.create([{username: 'Asma', name: 'Asma Al-Hemaidi', email: 'ahemaidi@qatar.cmu.edu', password: '12345678', admin: true}, 
+	{username: 'Noor', name: 'Noor Al-Ansari', email: 'nansari@qatar.cmu.edu', password: '12345678', admin: true},
+	{username: 'Shaikha', name: 'Shaikha Al-darwish', email: 'sdarwish@qatar.cmu.edu', password: '12345678', admin: true},
+	{username: 'User', name: 'User', email: 'sh.aldarwish@hotmail.com', password: '12345678', admin: false}])
 
 Genres = Genre.create([{name: 'Horror'}, 
 	{name: 'Adventure'}, 

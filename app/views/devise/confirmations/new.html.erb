@@ -11,7 +11,7 @@
       <% end %>
       <div class="form-group">
         <%= f.label :email %>
-        <%= f.email_field :email, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: 'form-control', autofocus: true, placeholder: 'email@example.com' %>
+        <%= f.email_field :email, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: 'form-control', autofocus: true, placeholder: 'sdarwish@qatar.cmu.edu' %>
       </div>
       <div class="actions">
         <%= f.submit 'Resend confirmation', class: 'btn btn-primary' %>
