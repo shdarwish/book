@@ -2,6 +2,7 @@ class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
   before_action :admin_only, only: [:edit, :new, :update, :create, :destroy]
   autocomplete :book, :title, :full => true
+  before_action :admin_only, only: [:create, :edit, :update, :destroy]
 
 
   # GET /books

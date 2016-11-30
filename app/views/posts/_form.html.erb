@@ -5,11 +5,7 @@
     <h4>Reading Status</h4>
         <div class="field">
       <%= f.label :book %>
-     <!-- <%= f.collection_select :book_id, Book.all, :id, :title, class: 'appformcontrol form-control' %> -->   
-    </div>
 
-    <div>
-      <!-- text field tag=action,args,identifier,placeholdertext... -->
 
       <%= f.autocomplete_field :book_name, autocomplete_book_title_books_path, id_element: '#book_id' %>
 <%= f.hidden_field :book_id, id: 'book_id' %>

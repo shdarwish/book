@@ -1,5 +1,6 @@
 class PrefersController < ApplicationController
   before_action :set_prefer, only: [:show, :edit, :update, :destroy]
+  before_action :admin_only, only: [:index]
 
   # GET /prefers
   def index
