@@ -5,7 +5,6 @@
     <h5><%= link_to @user.name, @user %></h5>
   </div>
   <div class="text-center">
-    <% if !@user.genres.size ==0 %>
       <hr>
       <h5> User's Genres </h5> 
       |
@@ -13,7 +12,7 @@
         <%= genre.name %>
         | 
       <% end %>
-    <% end %>
+   
   </div>
   
   <br>
